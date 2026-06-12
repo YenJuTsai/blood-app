@@ -1,12 +1,12 @@
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f6f8fb;
+  --bg-primary: #fffef0;
+  --bg-secondary: #fffdf5;
   --text-primary: #222;
   --text-secondary: #666;
-  --border-color: #ddd;
-  --border-light: #eee;
-  --header-bg: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.08);
+  --border-color: #e6e4cc;
+  --border-light: #f0ede3;
+  --header-bg: #fffef0;
+  --shadow: rgba(184, 160, 64, 0.08);
 }
 
 [data-theme="dark"] {
