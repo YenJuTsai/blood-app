@@ -1,15 +1,196 @@
+:root {
+  --bg-primary: #fffef0;
+  --bg-secondary: #fffdf5;
+  --text-primary: #222;
+  --text-secondary: #666;
+  --border-color: #e6e4cc;
+  --border-light: #f0ede3;
+  --header-bg: #fffef0;
+  --shadow: rgba(184, 160, 64, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --border-color: #444;
+  --border-light: #333;
+  --header-bg: #2d2d2d;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
 * { box-sizing: border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f6f8fb; color:#222; margin:0; padding:20px; }
-.container { max-width:900px; margin:0 auto; background:white; padding:20px; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.08); }
-h1 { margin:0 0 16px 0; }
-.form-row { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
-.form-row label { min-width:100px; }
-.form-row input, .form-row select, .form-row textarea { flex:1; padding:8px; border:1px solid #ddd; border-radius:4px; }
-.actions { display:flex; gap:8px; margin-top:12px; }
-.actions button { padding:8px 12px; border-radius:6px; border: none; cursor:pointer; background:#0366d6; color:white; }
-.actions button#clearBtn, .actions button#clearForm, .actions button#clearAll { background:#e55353; }
-.list { margin-top:20px; }
-table { width:100%; border-collapse:collapse; }
-thead th { text-align:left; padding:8px; background:#f3f6fb; }
-tbody td { padding:8px; border-top:1px solid #eee; }
-small.note { color:#666; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--header-bg);
+  padding: 16px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.toggle-label:hover {
+  background: var(--bg-primary);
+}
+
+.toggle-label .icon {
+  font-size: 18px;
+  display: inline-block;
+}
+
+.toggle-checkbox:checked ~ .toggle-label {
+  background: var(--bg-primary);
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-primary);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px var(--shadow);
+  transition: background-color 0.3s ease;
+}
+
+h1 { margin: 0 0 16px 0; }
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.row label {
+  font-weight: 500;
+}
+
+.row input, .row select, .row textarea {
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.row input:focus, .row select:focus, .row textarea:focus {
+  outline: none;
+  border-color: #0366d6;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.actions button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #0366d6;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+  background: #0256bf;
+}
+
+.actions button#clearForm, .actions button#clearAll {
+  background: #e55353;
+}
+
+.actions button#clearForm:hover, .actions button#clearAll:hover {
+  background: #d63a3a;
+}
+
+.list {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-align: left;
+  padding: 8px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 8px;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-primary);
+}
+
+tbody button {
+  padding: 4px 8px;
+  background: #e55353;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+tbody button:hover {
+  background: #d63a3a;
+}
+
+small.note {
+  color: var(--text-secondary);
+}
