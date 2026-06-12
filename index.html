@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>血壓管理 App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>血壓管理</h1>
+    <form id="bpForm">
+      <div class="row">
+        <label for="systolic">收縮壓 (mmHg)</label>
+        <input type="number" id="systolic" name="systolic" min="0" required>
+      </div>
+
+      <div class="row">
+        <label for="diastolic">舒張壓 (mmHg)</label>
+        <input type="number" id="diastolic" name="diastolic" min="0" required>
+      </div>
+
+      <div class="row">
+        <label for="pulse">脈搏 (bpm)</label>
+        <input type="number" id="pulse" name="pulse" min="0">
+      </div>
+
+      <div class="row">
+        <label for="med">是否使用藥物治療</label>
+        <select id="med" name="med">
+          <option value="無">無</option>
+          <option value="已服藥">已服藥</option>
+          <option value="未服藥">未服藥</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="notes">備註</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="可輸入備註..."></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit">新增記錄</button>
+        <button type="button" id="clearForm">清除表單</button>
+        <button type="button" id="clearAll">清除所有紀錄</button>
+      </div>
+    </form>
+
+    <section class="list">
+      <h2>紀錄清單</h2>
+      <table id="entriesTable">
+        <thead>
+          <tr>
+            <th>時間</th>
+            <th>收縮壓</th>
+            <th>舒張壓</th>
+            <th>脈搏</th>
+            <th>藥物</th>
+            <th>備註</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="entries"></tbody>
+      </table>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
