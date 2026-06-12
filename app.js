@@ -2,8 +2,27 @@ const form = document.getElementById('bpForm');
 const entriesTbody = document.getElementById('entries');
 const clearFormBtn = document.getElementById('clearForm');
 const clearAllBtn = document.getElementById('clearAll');
+const themeToggle = document.getElementById('themeToggle');
 
 let entries = [];
+
+// Theme management
+function loadTheme() {
+  const saved = localStorage.getItem('theme');
+  const isDark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  setTheme(isDark ? 'dark' : 'light');
+}
+
+function setTheme(theme) {
+  const isDark = theme === 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  themeToggle.checked = isDark;
+  localStorage.setItem('theme', theme);
+}
+
+themeToggle.addEventListener('change', () => {
+  setTheme(themeToggle.checked ? 'dark' : 'light');
+});
 
 function loadEntries() {
   const raw = localStorage.getItem('bp_entries');
@@ -83,5 +102,6 @@ clearAllBtn.addEventListener('click', () => {
 });
 
 // init
+loadTheme();
 loadEntries();
 renderEntries();
